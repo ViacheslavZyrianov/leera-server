@@ -1,0 +1,39 @@
+### Post story
+POST http://localhost:3000/stories
+Content-Type: application/json
+
+{
+  "title": "123Lorem ipsum 222",
+  "text": "123Lorem ipsum — класичний варіант умовного беззмістовного тексту, що вставляється в макет сторінки. Lorem ipsum — це перекручений уривок з філософського трактату Цицерона «Про межі добра і зла», написаного в 45 році до нашої ери латиною.",
+  "description": "description of the story",
+  "image_url": "https://shorturl.at/blHPW",
+  "author_id": 2,
+  "genre_id": 3,
+  "tags": "tag#1,tag#2,tag#3",
+  "price": 22.99,
+  "date": "2023-11-21T18:14:45.834Z"
+}
+
+
+
+### Get story by id
+
+GET http://localhost:3000/stories/1
+Accept: application/json
+
+
+
+### Patch story
+PATCH http://localhost:3000/stories/2
+Content-Type: application/json
+
+{
+  "title": "title-shorki",
+  "description": "new top description"
+}
+
+
+
+### Delete story
+DELETE http://localhost:3000/stories/2
+Content-Type: application/json
