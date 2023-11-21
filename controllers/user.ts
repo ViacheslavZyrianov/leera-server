@@ -15,7 +15,8 @@ exports.postUserRegister = ((req: any, res: any) => {
                 res.sendStatus(201)
             })
             .catch((err: any) => {
-                res.send(err)
+                if (err?.errors && err?.errors[0]) res.status(409).send(err.errors[0].message)
+                else res.status(500).send(err)
             })
     }
 
