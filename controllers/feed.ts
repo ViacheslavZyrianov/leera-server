@@ -1,5 +1,4 @@
 const objKeysCamel2Snake = require('../utils/objKeysCamel2Snake')
-const formatResponse = require('../utils/formatResponse')
 
 const Story = require('../models/story')
 
@@ -16,7 +15,8 @@ exports.postStory = (req: any, res: any) => {
 exports.getStoryById = (req: any, res: any) => {
     Story.findByPk(req.params.id)
         .then((storyRes: any) => {
-            res.send(formatResponse(storyRes))
+            if (storyRes) res.send(storyRes)
+            else res.send(404)
         })
         .catch((err: any) => {
             res.send(err)
