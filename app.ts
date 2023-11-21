@@ -26,7 +26,7 @@ app.use((req: any, res: any) => {
     res.sendStatus(404)
 })
 
-sequelize.sync({ force: true })
+sequelize.sync({ force: process.env.SEQUELIZE_SYNC_FORCE })
     .then(() => {
         app.listen(process.env.PORT, () => {
             console.log(`server started on ${process.env.PORT}`);
