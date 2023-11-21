@@ -7,19 +7,22 @@ module.exports = sequelize.define('user', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        unique: true
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     avatar: {
         type: DataTypes.STRING,
@@ -34,8 +37,9 @@ module.exports = sequelize.define('user', {
         allowNull: false
     },
     uuid: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.UUID,
+        allowNull: false,
+        unique: true
     }
 }, {
     timestamps: false
