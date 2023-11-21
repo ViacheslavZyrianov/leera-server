@@ -23,10 +23,6 @@ module.exports = sequelize.define('story', {
     },
     imageUrl: DataTypes.STRING,
     tags: DataTypes.STRING,
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
     price: {
         type: DataTypes.DOUBLE,
         allowNull: false
