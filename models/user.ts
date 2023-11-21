@@ -28,11 +28,11 @@ module.exports = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    is_premium: {
+    isPremium: {
         type: DataTypes.BOOLEAN,
         allowNull: false
     },
-    is_email_approved: {
+    isEmailApproved: {
         type: DataTypes.BOOLEAN,
         allowNull: false
     },
@@ -41,6 +41,4 @@ module.exports = sequelize.define('user', {
         allowNull: false,
         unique: true
     }
-}, {
-    timestamps: false
 })

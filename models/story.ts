@@ -21,15 +21,7 @@ module.exports = sequelize.define('story', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    image_url: DataTypes.STRING,
-    author_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    genre_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
+    imageUrl: DataTypes.STRING,
     tags: DataTypes.STRING,
     date: {
         type: DataTypes.DATE,
@@ -39,6 +31,4 @@ module.exports = sequelize.define('story', {
         type: DataTypes.DOUBLE,
         allowNull: false
     }
-}, {
-    timestamps: false
 })

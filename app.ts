@@ -5,6 +5,14 @@ const stories = require('./routes/stories')
 const user = require('./routes/user')
 const sequelize = require('./utils/database')
 
+// const User = require('./models/user')
+// const Story = require('./models/story')
+//
+// Story.belongsTo(User, {
+//     constraints: true
+// })
+// User.hasMany(Story)
+
 const app = express()
 
 app.use(bodyParser.json())
@@ -17,7 +25,7 @@ app.use((req: any, res: any) => {
     res.sendStatus(404)
 })
 
-sequelize.sync()
+sequelize.sync({ force: true })
     .then(() => {
         app.listen(process.env.PORT, () => {
             console.log(`server started on ${process.env.PORT}`);

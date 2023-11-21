@@ -1,9 +1,7 @@
-const objKeysCamel2Snake = require('../utils/objKeysCamel2Snake')
-
 const Story = require('../models/story')
 
 exports.postStory = (req: any, res: any) => {
-    Story.create(objKeysCamel2Snake(req.body))
+    Story.create(req.body)
         .then(() => {
             res.sendStatus(201)
         })
@@ -24,7 +22,7 @@ exports.getStoryById = (req: any, res: any) => {
 }
 
 exports.patchStory = (req: any, res: any) => {
-    Story.update(objKeysCamel2Snake(req.body), { where: { id: req.params.id } })
+    Story.update(req.body, { where: { id: req.params.id } })
         .then(() => {
             res.sendStatus(204)
         })
