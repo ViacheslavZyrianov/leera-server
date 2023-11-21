@@ -3,3 +3,4 @@ yarn.lock
 nodemon.json
 .idea
 .env
+routes/*.http
