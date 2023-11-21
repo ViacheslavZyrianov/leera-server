@@ -1,10 +1,16 @@
 const objKeysCamel2Snake = require('../utils/objKeysCamel2Snake')
 const bcrypt = require('bcrypt')
+const { v4: uuid } = require('uuid');
 const User = require('../models/user')
 
 exports.postUserRegister = ((req: any, res: any) => {
     const createUser = (password: string) => {
-        User.create(objKeysCamel2Snake({ ...req.body, password }))
+        const userData = objKeysCamel2Snake({
+            ...req.body,
+            password,
+            uuid: uuid()
+        })
+        User.create(userData)
             .then(() => {
                 res.sendStatus(201)
             })

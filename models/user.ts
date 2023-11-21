@@ -32,6 +32,10 @@ module.exports = sequelize.define('user', {
     is_email_approved: {
         type: DataTypes.BOOLEAN,
         allowNull: false
+    },
+    uuid: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     timestamps: false
