@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const routes = require('./routes/main')
+
 const stories = require('./routes/stories')
 const user = require('./routes/user')
 const sequelize = require('./utils/database')
@@ -17,7 +17,6 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.use(routes)
 app.use('/stories', stories)
 app.use('/user', user)
 
