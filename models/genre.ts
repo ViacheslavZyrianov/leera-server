@@ -14,6 +14,10 @@ module.exports = sequelize.define('genre', {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
+    },
+    isEnabled: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     timestamps: false
