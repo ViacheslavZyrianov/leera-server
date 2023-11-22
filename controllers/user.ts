@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const { v4: uuid } = require('uuid');
+const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 
 exports.postUserRegister = ((req: any, res: any) => {
@@ -27,6 +28,12 @@ exports.postUserRegister = ((req: any, res: any) => {
 })
 
 exports.postUserLogin = ((req: any, res: any) => {
+    interface loginDataInterface {
+        email?: string
+        login?: string
+        password: string
+    }
+
     let loginKey: string = ''
 
     if (req.body.hasOwnProperty('email')) loginKey = 'email'
@@ -41,6 +48,17 @@ exports.postUserLogin = ((req: any, res: any) => {
         .then((userRes: any) => {
             bcrypt.compare(req.body.password, userRes.password)
                 .then((userRes: any) => {
+                    const loginData: loginDataInterface = {
+                        [loginKey]: req.body[loginKey],
+                        password: req.body.password
+                    }
+
+                    userRes.token = jwt.sign(
+                        loginData,
+                        process.env.JWT_SECRET,
+                        { expires: '1m' }
+                    )
+
                     res.send(userRes)
                 })
                 .catch((err: any) => {
@@ -48,6 +66,6 @@ exports.postUserLogin = ((req: any, res: any) => {
                 })
         })
         .catch((err: any) => {
-            res.send(err)
+            res.status(401).send(err)
         })
 })
