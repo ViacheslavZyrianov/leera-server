@@ -2,8 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+const auth = require('./routes/auth')
 const stories = require('./routes/stories')
-const user = require('./routes/user')
 const genres = require('./routes/genres')
 
 const sequelize = require('./utils/database')
@@ -22,9 +22,9 @@ app.use(cors({
 }))
 app.use(bodyParser.json())
 
-app.use('/stories', stories)
-app.use('/user', user)
-app.use('/genres', genres)
+app.use('/api/auth', auth)
+app.use('/api/stories', stories)
+app.use('/api/genres', genres)
 
 app.use((req: any, res: any) => {
     res.sendStatus(404)
