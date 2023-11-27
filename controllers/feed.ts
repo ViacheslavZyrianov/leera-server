@@ -10,6 +10,17 @@ exports.postStory = (req: any, res: any) => {
         })
 }
 
+exports.getAllStories = (req: any, res: any) => {
+    Story.findAll()
+        .then((storyRes: any) => {
+            if (storyRes) res.send(storyRes)
+            else res.send(404)
+        })
+        .catch((err: any) => {
+            res.send(err)
+        })
+}
+
 exports.getStoryById = (req: any, res: any) => {
     Story.findByPk(req.params.id)
         .then((storyRes: any) => {
