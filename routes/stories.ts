@@ -2,6 +2,7 @@ const express = require('express')
 
 const {
     postStory,
+    getAllStories,
     getStoryById,
     patchStory,
     deleteStory
@@ -10,6 +11,8 @@ const {
 const router = express.Router()
 
 router.post('/', postStory)
+
+router.get('/', getAllStories)
 
 router.get('/:id', getStoryById)
 
