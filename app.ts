@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const stories = require('./routes/stories')
 const user = require('./routes/user')
@@ -16,6 +17,9 @@ Genre.hasMany(Story)
 
 const app = express()
 
+app.use(cors({
+    origin: 'http://localhost:8080'
+}))
 app.use(bodyParser.json())
 
 app.use('/stories', stories)
