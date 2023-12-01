@@ -6,7 +6,7 @@ const {
     getStoryById,
     patchStory,
     deleteStory
-} = require('../controllers/feed')
+} = require('../controllers/story')
 
 const router = express.Router()
 
