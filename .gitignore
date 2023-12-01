@@ -4,3 +4,4 @@ nodemon.json
 .idea
 .env
 /**/*.http
+.fleet
